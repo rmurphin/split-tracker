@@ -1,6 +1,6 @@
 // Offline shell: try the network first so updates show right away, fall back to the last copy when offline.
 const C = 'split-1795575183';
-const SHELL = ['./', 'index.html', 'app.js', 'config.js', 'manifest.webmanifest', 'icon-192.png', 'apple-touch-icon.png'];
+const SHELL = ['./', 'index.html', 'app.js', 'config.js', 'manifest.webmanifest', 'icon.svg'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(C).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
